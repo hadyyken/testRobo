@@ -1,0 +1,15 @@
+version: '2'
+
+services:
+  Dockerfilephp:
+    build: ./docker/Testrobofinance-main
+    volumes:
+       - ./:/testrobo/app
+    ports: 
+      - '8000:80'
+    environment:
+      - VIRTUAL_HOST=localhost
+    depends on:
+      - db
+  Dockerfiledb:
+    build: ./docker/mysql
